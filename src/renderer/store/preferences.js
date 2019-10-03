@@ -25,6 +25,8 @@ const state = {
   autoPairMarkdownSyntax: true,
   autoPairQuote: true,
   endOfLine: 'default',
+  defaultEncoding: 'utf8',
+  autoGuessEncoding: true,
   textDirection: 'ltr',
   hideQuickInsertHint: false,
   imageInsertAction: 'folder',

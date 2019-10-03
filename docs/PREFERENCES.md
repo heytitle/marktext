@@ -33,6 +33,8 @@ Preferences can be controlled and modified in the settings window or via the `pr
 | codeFontFamily         | String  | `DejaVu Sans Mono` | Code font family                                                                                                                                                      |
 | hideQuickInsertHint    | Boolean | false              | Hide hint for quickly creating paragraphs                                                                                                                             |
 | imageDropAction        | String  | folder             | The default behavior after paste or drag the image to Mark Text, upload it to the image cloud (if configured), move to the specified folder, insert the path          |
+| defaultEncoding        | String  | `utf8`             | The default file encoding                                                                                                                                             |
+| autoGuessEncoding      | Boolean | true               | Try to automatically guess the file encoding when opening files                                                                                                       |
 
 #### Markdown
 
@@ -45,9 +47,17 @@ Preferences can be controlled and modified in the settings window or via the `pr
 | tabSize             | Number  | 4       | The number of spaces a tab is equal to                                                                                               |
 | listIndentation     | String  | 1       | The list indentation of sub list items or paragraphs, optional value `dfm`, `tab` or number 1~4                                      |
 | frontmatterType     | String  | `-`     | The frontmatter type: `-` (YAML), `+` (TOML), `;` (JSON) or `{` (JSON)                                                               |
+#### Theme
 
+| Key   | Type   | Default | Description                                                           |
+| ----- | ------ | ------- | --------------------------------------------------------------------- |
+| theme | String | light   | `dark`, `graphite`, `material-dark`, `one-dark`, `light` or `ulysses` |
 
-#### View
+#### Editable via file
+
+These entires don't have a settings option and need to be changed manually.
+
+##### View
 
 | Key                           | Type    | Default | Description                                        |
 | ----------------------------- | ------- | ------- | -------------------------------------------------- |
@@ -57,8 +67,13 @@ Preferences can be controlled and modified in the settings window or via the `pr
 
 \*: These options are default/fallback values that are used if not session is loaded and are overwritten by the menu entries.
 
-#### Theme
+##### File system
 
-| Key   | Type   | Default | Description                                                           |
-| ----- | ------ | ------- | --------------------------------------------------------------------- |
-| theme | String | light   | `dark`, `graphite`, `material-dark`, `one-dark`, `light` or `ulysses` |
+| Key                  | Type             | Default | Description                                                                                                                                                      |
+| -------------------- | ---------------- | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| searchExclusions     | Array of Strings | `[]`    | The filename exclusions for the file searcher. Default: `'*.markdown', '*.mdown', '*.mkdn', '*.md', '*.mkd', '*.mdwn', '*.mdtxt', '*.mdtext', '*.text', '*.txt'` |
+| searchMaxFileSize    | String           | `""`    | The maximum file size to search in (e.g. 50K or 10MB). Default: unlimited                                                                                        |
+| searchIncludeHidden  | Boolean          | false   | Search hidden files and directories                                                                                                                              |
+| searchNoIgnore       | Boolean          | false   | Don't respect ignore files such as `.gitignore`.                                                                                                                 |
+| searchFollowSymlinks | Boolean          | true    | Whether to follow symbolic links.                                                                                                                                |
+| watcherUsePolling    | Boolean          | false   | Whether to use polling to receive file changes. Polling may leads to high CPU utilization.                                                                       |
